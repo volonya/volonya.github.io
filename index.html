@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CodePen - allTogether</title>
-  <link rel="stylesheet" href="./style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<div id="layout">
-  <nav></nav>
-  <main>
-    <div class="left-sidebar"></div>
+
+    <div class="container">
+        <div id="leftButton"><img src="./assets/arrow.svg" alt=""></div>
+        <div id="imgContainer">
+            <img id="mainImg">
+            <div>
+                <h2 id="mainTitle">Title</h2>
+                <p id="mainDescription">Description </p>
+            </div>
+        </div>
+        <div id="rightButton"><img src="./assets/arrow.svg" alt=""></div>
+    </div>
+
+    <div id="thumbnailContainer">
+        
+    </div>
     
-    <div class="main-content">
-          
-    
-    <div class="fixed"></div>
-</div>
-    
-    <div class="right-sidebar"></div>
-  </main>
-  <footer> </footer>
-</div>
-<!-- partial -->
-  
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="gallery.js"></script>
 </body>
 </html>
