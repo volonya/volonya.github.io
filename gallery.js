@@ -44,34 +44,77 @@ $(document).ready(function () {
     changeimgContainer(imgIndex);
 });
 
-$("#thumbnailContainer").click(function(event){
+$("#thumbnailContainer").click(function (event) {
     imgIndex = event.target.name;
     changeimgContainer(event.target.name);
 });
 
 function changeimgContainer(index) {
-    $('#mainImg').attr('src', data[index].photo);
-    $('#mainTitle').text(data[index].title);
-    $('#mainDescription').text(data[index].description);
-    updateThumbSelection();
+    console.log(index);
+    if (data[index].photo) {
+        $('#mainImg').attr('src', data[index].photo);
+        $('#mainTitle').text(data[index].title);
+        $('#mainDescription').text(data[index].description);
+        updateThumbSelection();
+    } else {
+        console.error("Please click on thumbnails");
+    }
+
 }
 
 function loadThumbs() {
     $('.thumb').remove();
     $.each(data, function (key, value) {
         console.log("load1", key, value);
-        $( "#thumbnailContainer" ).append("<img class=\"thumb\" src=\"" +value.photo+ " \" name=\""+key+"\">" );
+        $("#thumbnailContainer").append("<img class=\"thumb\" src=\"" + value.photo + " \" name=\"" + key + "\">");
     });
 }
 
 function updateThumbSelection() {
-    $.each( $(".thumb"), function (key){
+    $.each($(".thumb"), function (key) {
         console.log("key", key, "imgindex", imgIndex);
         if (Number(key) === Number(imgIndex)) {
-            console.log("EGYENLŐ"); 
-            $(this).addClass( "thumbShowing" );
-        }else {
-            $(this).removeClass( "thumbShowing" );
-        } 
+            console.log("EGYENLŐ");
+            $(this).addClass("thumbShowing");
+        } else {
+            $(this).removeClass("thumbShowing");
+        }
     });
+}
+
+$("#leftButton").click(function () {
+    shiftLeft();
+});
+
+$("#rightButton").click(function () {
+    shiftRight();
+});
+
+$(document).keyup(function (event) {
+    console.log("Handler for .keyup() called.", event.which);
+    if (event.which === 37) {
+        shiftLeft();
+    } else if (event.which === 39) {
+        shiftRight();
+    }
+});
+
+function shiftLeft() {
+    console.log("left");
+    if (imgIndex > 0) {
+        imgIndex--;
+    } else {
+        imgIndex = data.length - 1;
+    }
+    changeimgContainer(imgIndex);
+}
+
+function shiftRight() {
+    console.log("right");
+    if (imgIndex < data.length - 1) {
+        imgIndex++;
+    } else {
+        imgIndex = 0;
+    }
+    changeimgContainer(imgIndex);
 }
