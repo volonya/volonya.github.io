@@ -1,5 +1,5 @@
 let imgIndex = 0;
-
+ 
 let data = [
     {
         photo: 'images/0.jpeg',
